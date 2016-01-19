@@ -1,0 +1,22 @@
+<div id="page">
+	<h1>Welcome <%= @user.username %></h1>
+	<p class="snug"><%= link_to "New Ship", new_boat_path %></p>
+	<p class="snug"><%= link_to "New Job", new_job_path %></p>
+	<div id="boats">
+		<h2>You're Ships</h2>
+		<% @boats.each do |b| %>
+			<h3 class="snug"><%= link_to b.name, b %></h3>
+			<p class="snug"><%= b.capacity %> containers</p>
+			<p class="snug"><%= b.location.name %></p>
+			<p class="snug"><%= b.user.username %></p>
+			<br>
+		<% end %>
+	</div>
+	<div id="open_jobs">
+		<h2>Open Jobs</h2>
+		<% @jobs.each do |j| %>
+			<h3 class="snug"><%= link_to j.name, j %></h3>
+			<!-- need to add a user reference to job model in order to know who created the job -->
+		<% end %>
+	</div>
+</div>

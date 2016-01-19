@@ -1,0 +1,29 @@
+<div id="page">
+	<h2><%= @job.name %></h2>
+	<p><span class="jobattr">Cost:</span> <%= number_to_currency(@job.cost) %></p>
+	<p><span class="jobattr">Cargo:</span> <%= @job.cargo %></p>
+	<p><span class="jobattr">Origin:</span> <%= @origin.name %></p>
+	<p><span class="jobattr">Destination:</span> <%= @destination.name %></p>
+	
+	<% if @job.boat_id == nil %>
+		<h2>Available Ships</h2>
+		<%= form_for @job do |b| %>
+			<%= b.collection_select :boat_id, @boats, :id, :name, :prompt => "Select a Ship" %>
+			<%= b.submit %>
+		<% end %>
+	<% else %>
+		<h2>Selected Ship</h2>
+		<%= @job.boat.name %>
+
+		<!-- click link, 
+			- sets jobs state to complete, 
+			- removes job from current jobs list for ship and adds it to the completed jobs list
+			- *maybe one day*
+				- adds job.cost to user.bank (job.cost += user.bank)
+				- when adding job to ship, decreases the ships available container number (boat.capacity -= job.container)
+					- when completing job, add job.container to boat.capacity 
+
+			 -->
+		<%= link_to "Complete Job", @job.boat %>
+	<% end %>
+</div>

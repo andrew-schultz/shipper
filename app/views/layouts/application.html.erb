@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shipper</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<% if flash[:notice] %>
+		<div class="notice flash" ><%= flash[:notice] %></div>
+	<% end %>
+
+	<% if flash[:alert] %>
+		<div class="alert flash"><%= flash[:alert] %></div>
+	<% end %>
+
+<% if current_user %>
+	<header>
+		<h1>
+			<%= link_to "Shipped", root_path %>
+		</h1>
+		<nav>
+			<ul>
+				<li> <%= link_to "Home", root_path %></li>
+				<li> <%= link_to "Log Out", '/log-out' %></li>
+			</ul>
+		</nav>
+	</header>
+<% else %>
+	<header>
+		<h1>
+			Shipped
+		</h1>
+		<nav>
+			<ul>
+				<li> <%= link_to "Log In", log_in_path %></li>
+				<li> <%= link_to "Sign Up", new_user_path %></li>
+			</ul>
+		</nav>
+	</header>
+<% end %>
+<%= yield %>
+
+</body>
+</html>

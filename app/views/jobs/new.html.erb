@@ -1,0 +1,18 @@
+<div id="page">
+	<h1>New Job</h1>
+	<%= form_for @job do |j| %>
+		<%= j.label :name %>
+		<%= j.text_field :name %>
+		<%= j.label :cost %>
+		<%= j.number_field :cost, :step => 0.01 %>
+		<%= j.label :containers %>
+		<%= j.number_field :containers %>
+		<%= j.label :cargo %>
+		<%= j.text_area :cargo %>
+		<%= j.label :origin %>
+		<%= j.collection_select :origin, @locations, :id, :name, :prompt => "Select an Origin"%>
+		<%= j.label :destination %>
+		<%= j.collection_select :destination, @locations, :id, :name, :prompt => "Select a Destination" %>
+		<%= j.submit %>
+	<% end %>
+<div>

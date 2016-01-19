@@ -1,0 +1,9 @@
+<div id="page">
+	<h1>All Boats</h1>
+	<% @boats.each do |b| %>
+		<p class="snug"><%= b.name %></p>
+		<p class="snug"><%= b.capacity %> containers</p>
+		<p class="snug"><%= b.location %></p>
+		<p class="snug"><%= b.user.username %></p>
+	<% end %>
+<div>
