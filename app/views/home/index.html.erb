@@ -1,22 +1,117 @@
-<div id="page">
-	<h1>Welcome <%= @user.username %></h1>
-	<p class="snug"><%= link_to "New Ship", new_boat_path %></p>
-	<p class="snug"><%= link_to "New Job", new_job_path %></p>
-	<div id="boats">
-		<h2>You're Ships</h2>
-		<% @boats.each do |b| %>
-			<h3 class="snug"><%= link_to b.name, b %></h3>
-			<p class="snug"><%= b.capacity %> containers</p>
-			<p class="snug"><%= b.location.name %></p>
-			<p class="snug"><%= b.user.username %></p>
-			<br>
-		<% end %>
+<div id="full_page">
+	<div id="user_panel">
+		<div class="panel_wrapper">
+			<h2 class="snug top_space"><%= @user.username %>'s Fleet</h2>
+			<p class="subtext snug">Click a ship to expand</p>
+			<div id="boats">
+				<% @boats.each do |b| %>
+					<div class="boat_name fat_sub_title top_space">
+						<%= image_tag b.avatar.url(:thumb), class: "circle" %><%= b.name %>
+						<div class="boat_hide"<% link_to b %>>
+							<p class="snug small right"><%= link_to b.capacity, b %> containers</p>
+							<p class="snug small right"><%= link_to b.location.name, b %></p>
+							<p class="snug fat_sub_title top_space right">Current Jobs</p>
+							<% if b.jobs %>
+								<% b.jobs.each do |j| %>
+									<p class="snug small right"><%= link_to j.name, j %></p>
+								<% end %>
+							<% else %>
+								<p>none</p>
+							<% end %>	
+						</div>
+					</div>
+				<% end %>
+				<p><%= link_to "New Ship", new_boat_path %></p>
+			</div>
+		</div>
 	</div>
-	<div id="open_jobs">
-		<h2>Open Jobs</h2>
-		<% @jobs.each do |j| %>
-			<h3 class="snug"><%= link_to j.name, j %></h3>
-			<!-- need to add a user reference to job model in order to know who created the job -->
-		<% end %>
+	<div id="map">
+		<div id="map_img">
+			<!-- hong kong -->
+			<div id='l1' class="loc">
+				<div class="loc_info">
+					<p class="poptit">Hong Kong</p>
+					<p class="underline">Boats at Port</p>
+					<% @boats.where(location_id: 1).each do |b| %>
+						<p><%= link_to b.name, b %></p>
+					<% end %>
+					<p class="underline">Available Jobs</p>
+					<% @jobs.where(origin: 1).each do |j| %>
+						<p><%= link_to j.name, j %></p>
+					<% end %>
+				</div>
+			</div>
+			<!-- lisbon -->
+			<div id='l2' class="loc">
+				<div class="loc_info">
+					<p class="poptit">Lisbon</p>
+					<p class="underline">Boats at Port</p>
+					<% @boats.where(location_id: 2).each do |b| %>
+						<p><%= link_to b.name, b %></p>
+					<% end %>
+					<p class="underline">Available Jobs</p>
+					<% @jobs.where(origin: 2).each do |j| %>
+						<p><%= link_to j.name, j %></p>
+					<% end %>
+				</div>
+			</div>
+			<!-- san fran -->
+			<div id='l3' class="loc">
+				<div class="loc_info">
+					<p class="poptit">San Francisco</p>
+					<p class="underline">Boats at Port</p>
+					<% @boats.where(location_id: 3).each do |b| %>
+						<p><%= link_to b.name, b %></p>
+					<% end %>
+					<p class="underline">Available Jobs</p>
+					<% @jobs.where(origin: 3).each do |j| %>
+						<p><%= link_to j.name, j %></p>
+					<% end %>
+				</div>
+			</div>
+			<!-- brooklyn -->
+			<div id='l4' class="loc">
+				<div class="loc_info">
+					<p class="poptit">Brooklyn</p>
+					<p class="underline">Boats at Port</p>
+					<% @boats.where(location_id: 4).each do |b| %>
+						<p><%= link_to b.name, b %></p>
+					<% end %>
+					<p class="underline">Available Jobs</p>
+					<% @jobs.where(origin: 4).each do |j| %>
+						<p><%= link_to j.name, j %></p>
+					<% end %>
+				</div>
+			</div>
+			<!-- congo -->
+			<div id='l5' class="loc">
+				<div class="loc_info">
+					<p class="poptit">Matadi, DRC</p>
+					<p class="underline">Boats at Port</p>
+					<% @boats.where(location_id: 5).each do |b| %>
+						<p><%= link_to b.name, b %></p>
+					<% end %>
+					<p class="underline">Available Jobs</p>
+					<% @jobs.where(origin: 5).each do |j| %>
+						<p><%= link_to j.name, j %></p>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="jobs_panel">
+		<div class="panel_wrapper">
+			<div id="open_jobs">
+				<h2>Open Jobs</h2>
+				<% @jobs.each do |j| %>
+					<h3 class="snug"><%= link_to j.name, j %></h3>
+					<p class="snug ago">Posted by <%= j.user.username %> <%= time_ago_in_words(j.created_at) + " ago"%></p>
+				<% end %>
+			</div>
+			<div id="new_job">
+				<h2>New Job</h2>
+				<%= render partial: 'jobs/new', local: {job: @job} %>
+			</div>
+		</div>
 	</div>
 </div>

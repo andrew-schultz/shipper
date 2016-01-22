@@ -13,6 +13,7 @@
 		<%= j.collection_select :origin, @locations, :id, :name, :prompt => "Select an Origin"%>
 		<%= j.label :destination %>
 		<%= j.collection_select :destination, @locations, :id, :name, :prompt => "Select a Destination" %>
+		<%= j.hidden_field :user_id, :value => @user.id %>
 		<%= j.submit %>
 	<% end %>
 <div>

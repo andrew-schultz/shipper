@@ -1,15 +1,17 @@
 <div id="page">
 	<div id="new_boat">
 		<h1>New Boat</h1>
-		<%= form_for @boat do |f| %>
+		<%= form_for @boat, :url => boats_path, :html => { :multipart => true } do |f| %>
 			<%= f.label :name %>
 			<%= f.text_field :name %>
 			<%= f.label :capacity %>
 			<%= f.text_field :capacity %>
 			<%= f.label :location %>
-			<!-- :location refers to the column on the boats table, @locations is an instance variable set equal to Location.all, :id is the value actually being selected, :name is the name of the location and is what is displayed in the dropdown, :placeholder is just a place holder -->
+			<!-- :location refers to the column on the boats table, @locations is an instance variable set equal to Location.all, :id is the value actually being selected, :name is the name of the location and is what is displayed in the dropdown, the prompt acts as a place holder -->
 			<%= f.collection_select :location_id, @locations, :id, :name, {:prompt => "Select a Location"} %>
+			<%= f.file_field :avatar %>
 			<%= f.hidden_field :user_id, :value => @user.id %>
+			<%= f.hidden_field :state, :value => 1 %>
 			<%= f.submit %>
 		<% end %>
 	</div>

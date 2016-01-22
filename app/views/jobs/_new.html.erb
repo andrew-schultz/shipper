@@ -1,0 +1,30 @@
+<%= form_for @job do |j| %>
+	<%= j.label :name %>
+	<%= j.text_field :name, :class => "user_input" %>
+	<br>
+	<br>
+	<%= j.label :cost %>
+	<%= j.number_field :cost, :step => 0.01, :class =>"user_input" %>
+	<br>
+	<br>
+	<%= j.label :containers %>
+	<%= j.number_field :containers, :class => "user_input" %>
+	<br>
+	<br>
+	<%= j.label :origin%>
+	<%= j.collection_select :origin, @locations, :id, :name, {:prompt => "Select an Origin"}, {:class => "user_input"}%>
+	<br>
+	<br>
+	<%= j.label :destination %>
+	<%= j.collection_select :destination, @locations, :id, :name, {:prompt => "Select a Destination"}, {:class => "user_input"} %>
+	<br>
+	<br>
+	<%= j.label :cargo %>
+	<%= j.text_area :cargo, :class => "user_input" %>
+	<br>
+	<br>
+	<%= j.hidden_field :user_id, :value => @user.id %>
+	<%= j.hidden_field :state, :value => 1 %>
+	<br>
+	<%= j.submit  :class => "button"%>
+<% end %>

@@ -1,3 +1,117 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#full_page {
+	width: 100%;
+}
+
+.panel_wrapper {
+	padding: 10px;
+}
+
+#user_panel {
+	width: 17%;
+	background-color: #f2f2f2;
+	float: left;
+	min-height: 720px;
+}
+
+.boat_hide {
+	display: none;
+}
+
+.boat_name {
+	border: 2px solid;
+	padding: 5px;
+	border-radius: 5px;
+	
+}
+
+#map {
+	width: 59%;
+	min-height: 720px;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#open_jobs {
+	margin: 0;
+}
+
+#map_img {
+	position: absolute;
+	background-image: url('bw_world_map.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 900px;
+	height: 53%;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+#map_img p {
+	color: rgba(255, 255, 255, 0.8);
+	padding: 5px;
+	text-align: center;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#map_img a {
+	color: rgba(255, 255, 255, 0.8);
+}
+
+#jobs_panel {
+	width: 22.5%;
+	background-color: #f2f2f2;
+	min-height: 720px;
+	float: right;
+}
+
+.loc {
+	height: 15px;
+	width: 15px;
+	border-radius: 50%;
+	background-color: rgba(255, 0, 0, 0.6);
+	z-index: 100;
+}
+
+.loc_info {
+	border: 2px solid #f2f2f2;
+	background-color: rgba(0, 0, 0, 0.7);
+	display: none;
+	position: absolute;
+	padding: 5px;
+}
+
+.poptit {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+#l1 {
+	margin-left: 72%;
+	margin-top: 150px;
+}
+
+#l2 {
+	margin-left: 41.5%;
+	margin-top: -55px;
+}
+
+#l3 {
+	margin-left: 14.8%;
+	margin-top: -11px;
+}
+
+#l4 {
+	margin-left: 26.3%;
+	margin-top: -20px;
+}
+
+#l5 {
+	margin-left: 46.5%;
+	margin-top: 95px;
+}

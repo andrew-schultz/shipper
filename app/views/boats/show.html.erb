@@ -1,26 +1,13 @@
 <div id="page">
 	<h1><%= @boat.name %></h1>
+	<h3 class="snug">Docked in <%= @boat.location.name %></h3>
+	<h3 class="snug"><%= @boat.capacity %> containers</h3>
+
 	<h2>Jobs</h2>
 	<% @jobs.each do |job| %>
 		<p><%= link_to job.name, job %></p>
 	<% end %>
 
-	<h2>New Job</h2>
-	<%= form_for @job do |j| %>
-		<%= j.hidden_field :boat_id, :value => @boat.id %>
-		<%= j.label :name %>
-		<%= j.text_field :name %>
-		<%= j.label :cost %>
-		<%= j.number_field :cost, :step => 0.01 %>
-		<%= j.label :containers %>
-		<%= j.number_field :containers %>
-		<%= j.label :cargo %>
-		<%= j.text_area :cargo %>
-		<%= j.label :origin %>
-		<%= j.collection_select :origin, @locations, :id, :name, :prompt => "Select an Origin"%>
-		<%= j.label :destination %>
-		<%= j.collection_select :destination, @locations, :id, :name, :prompt => "Select a Destination" %>
-		<%= j.submit %>
-	<% end %>
+	
 
 </div>

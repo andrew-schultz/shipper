@@ -11,15 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160119170136) do
+ActiveRecord::Schema.define(version: 20160121212209) do
 
   create_table "boats", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "name"
     t.integer  "capacity"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "location_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "boats", ["location_id"], name: "index_boats_on_location_id"
@@ -35,9 +39,12 @@ ActiveRecord::Schema.define(version: 20160119170136) do
     t.integer  "destination"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.integer  "state"
   end
 
   add_index "jobs", ["boat_id"], name: "index_jobs_on_boat_id"
+  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id"
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"

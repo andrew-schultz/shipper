@@ -1,0 +1,8 @@
+
+<%= form_for @boat do |b| %>
+	<%= b.hidden_field :location_id, :value => @job.destination %>
+		<% b.fields_for :jobs  do |j| %>
+			<%= j.hidden_field :state, :value => 3 %>
+		<% end %>
+	<%= b.submit id="complete"%>
+<% end %>

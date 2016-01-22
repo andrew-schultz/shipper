@@ -31,6 +31,7 @@ header h1 {
 	width: 50%;
 	margin-top: 10px;
 	padding-left: 20px;
+	margin-bottom: 0;
 }
 
 nav {
@@ -54,6 +55,22 @@ a {
 	text-decoration: none;
 }
 
+.circle {
+	border-radius: 50%;
+}
+
+.right {
+	margin-left: 50px;
+}
+
+footer {
+	height: 50px;
+	width: 100%;
+	background-color: #f2f2f2;
+	bottom: 0px;
+	position: absolute;
+}
+
 #page {
 	width: 80%;
 	margin: 0 auto;
@@ -68,6 +85,63 @@ a {
 	margin-bottom: 0;
 }
 
+.underline {
+	text-decoration: underline;
+}
+
+.subtext {
+	font-size: 15px;
+	font-weight: 300;
+}
+
 .inline {
 	display: inline-block;
+}
+
+.thin_sub_title {
+	font-size: 20px;
+}
+
+.fat_sub_title {
+	font-size: 24px;
+	font-weight: 700;
+}
+
+.small {
+	font-weight: 300;
+	font-size: 18px;
+}
+
+.ago {
+	font-size: 11px;
+}
+
+.user_input {
+	border: 2px solid;
+	border-radius: 5px;
+	font-size: 15px;
+	float: right;
+	padding: 3px;
+}
+
+.top {
+	margin-top: 80px;
+}
+
+.clear {
+	clear: both;
+}
+
+.button {
+	border: 2px solid;
+	float: right;
+	background-color: white;
+	font-weight: 700;
+	font-size: 15px;
+	clear: both;
+	border-radius: 5px;
+}
+
+.top_space {
+	margin-top: 10px;
 }

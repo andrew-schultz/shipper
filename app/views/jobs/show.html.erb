@@ -4,16 +4,22 @@
 	<p><span class="jobattr">Cargo:</span> <%= @job.cargo %></p>
 	<p><span class="jobattr">Origin:</span> <%= @origin.name %></p>
 	<p><span class="jobattr">Destination:</span> <%= @destination.name %></p>
+	<p><span class="jobattr">state:</span> <%= @job.state %></p>
+	<p><span class="jobattr">user_id:</span> <%= @job.user.username %></p>
+	<p><span class="jobattr">boat location:</span> <%= @job.boat.name %></p>
+
 	
 	<% if @job.boat_id == nil %>
 		<h2>Available Ships</h2>
-		<%= form_for @job do |b| %>
-			<%= b.collection_select :boat_id, @boats, :id, :name, :prompt => "Select a Ship" %>
-			<%= b.submit %>
+		<%= form_for @job do |j| %>
+			<%= j.collection_select :boat_id, @boats, :id, :name, :prompt => "Select a Ship" %>
+			<%= j.hidden_field :state, :value => 2 %>
+			<%= j.submit %>
 		<% end %>
 	<% else %>
 		<h2>Selected Ship</h2>
-		<%= @job.boat.name %>
+		<p class="thin_sub_title"><%= link_to @job.boat.name, @job.boat %><p>
+
 
 		<!-- click link, 
 			- sets jobs state to complete, 
@@ -22,8 +28,16 @@
 				- adds job.cost to user.bank (job.cost += user.bank)
 				- when adding job to ship, decreases the ships available container number (boat.capacity -= job.container)
 					- when completing job, add job.container to boat.capacity 
-
-			 -->
-		<%= link_to "Complete Job", @job.boat %>
+					 -->
+		<% if @job.state == 2 %>	
+			<%= render partial: "boats/edit", locals: {boat: @boat} %>
+			<%= form_for @job do |j| %>
+				<%= j.hidden_field :state, :value => 3 %>
+				<%= j.submit %>
+			<% end %>
+		<% elsif @job.state == 3 %>
+			<h1>COMPLETED</h1>
+		<% end %>
 	<% end %>
 </div>
+

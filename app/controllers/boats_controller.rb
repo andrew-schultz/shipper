@@ -25,6 +25,7 @@ class BoatsController < ApplicationController
   def update
   	@boat = Boat.find(params[:id])
   	@boat.update(boat_params)
+    redirect_to :back
   end
 
   def show
@@ -41,9 +42,14 @@ class BoatsController < ApplicationController
   	redirect_to root_path
   end
 
+  def _edit
+    @boat = Boat.find(params[:id])
+    @job = Jobs.find(params[:id])
+  end
+
   private
 
   def boat_params
-  	params.require(:boat).permit(:name, :capacity, :location_id, :user_id)
+  	params.require(:boat).permit(:name, :capacity, :location_id, :avatar, :user_id, jobs_attributes:[:state])
   end
 end
