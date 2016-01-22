@@ -6,7 +6,7 @@
 			<div id="boats">
 				<% @boats.each do |b| %>
 					<div class="boat_name fat_sub_title top_space">
-						<%= image_tag b.avatar.url(:thumb), class: "circle" %><%= b.name %>
+						<%= image_tag b.avatar.url(:thumb), class: "thumb fill" %><%= b.name %>
 						<div class="boat_hide"<% link_to b %>>
 							<p class="snug small right"><%= link_to b.capacity, b %> containers</p>
 							<p class="snug small right"><%= link_to b.location.name, b %></p>
