@@ -29,11 +29,14 @@ class BoatsController < ApplicationController
   end
 
   def show
+    @user = current_user
   	@boat = Boat.find(params[:id])
   	@jobs = @boat.jobs
   	@job = Job.new
     @locations = Location.all
     @addjob = Job.where(boat_id: nil)
+    # @unfollow = Followship.find_by(user_id: @user.id, boat_id: @boat.id)
+    @follow = Followship.new
   end
 
   def destroy
@@ -45,6 +48,18 @@ class BoatsController < ApplicationController
   def _edit
     @boat = Boat.find(params[:id])
     @job = Jobs.find(params[:id])
+  end
+
+  def _boatedit
+    @boat = Boat.find(params[:id])
+  end
+
+  def _show
+    @boat = Boat.find(params[:id])
+    @jobs = @boat.jobs
+    @job = Job.new
+    @locations = Location.all
+    @addjob = Job.where(boat_id: nil)
   end
 
   private

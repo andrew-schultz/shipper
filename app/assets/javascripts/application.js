@@ -37,10 +37,27 @@ $(document).ready(function(){
 			$(this).addClass('open');
 			$(this).children().slideDown(200);
 		};
-		
 	});
 
+	$('.thumb').on('click', function(){
+		if($(this).hasClass('out')){
+			$(this).removeClass('out');
+			$(this).children().show().animate({
+				'left': '300px',
+				'height': '300px',
+				'width': '300px',
+			});
+		}
+	});
 
+	$('#img_pop').on('click', function(){
+		$('#hide').show().animate({
+			'width': '250px',
+			'height': '100px',
+			'top': '-175px',
+			'left': '5px',
+		})
+	})
 
 });
 

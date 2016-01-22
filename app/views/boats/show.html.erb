@@ -1,13 +1,38 @@
 <div id="page">
-	<h1><%= @boat.name %></h1>
-	<h3 class="snug">Docked in <%= @boat.location.name %></h3>
-	<h3 class="snug"><%= @boat.capacity %> containers</h3>
-
-	<h2>Jobs</h2>
-	<% @jobs.each do |job| %>
-		<p><%= link_to job.name, job %></p>
-	<% end %>
-
+	<div id="boat_show">
+		<div id="boat_img">
+			<%= image_tag @boat.avatar.url(:medium), class: "boat_circle"%>
+			<p class="small" id="img_pop">
+				Add an Image
+			</p>
+			<div class="follow_form">
+				<% if Followship.where(user_id: @user.id, boat_id: @boat.id).first == nil%>
+					<%= link_to 'Follow', follow_path(@boat), method: :post %>
+				<% else %>
+					<%= link_to 'Unfollow', unfollow_path(@boat), method: :post %>
+				<% end %>
+			</div>
+			<div id="hide">
+				<%= render partial: 'addimg', local: {  boat: @boat } %>
+			</div>
+		</div>
 	
+		<div id="boat_info">
+			<h1 class="snug top_space"><%= @boat.name %></h1>
+			<p class="thin_title snug">Docked in <%= @boat.location.name %></p>
+			<p class="thin_title snug"><%= @boat.capacity %> containers</p>
 
+			<h2>Current Jobs</h2>
+			<% @jobs.claimed.each do |job| %>
+				<p class="thin_sub_title snug top_space"><%= link_to job.name, job %></p>
+				<p class="subtext snug">taken <%= time_ago_in_words(job.updated_at)%> ago</p>
+			<% end %>
+
+			<h2>Completed Jobs</h2>
+			<% @jobs.complete.each do |j| %>
+				<p class="thin_sub_title snug top_space"><%= link_to j.name, j %></p>
+				<p class="subtext snug">Completed <%= time_ago_in_words(j.updated_at) %> ago</p> 
+			<% end %>
+		</div>
+	</div>
 </div>

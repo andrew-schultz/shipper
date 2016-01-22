@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   get '/log-in' => 'sessions#new'
   post '/log-in' => 'sessions#create'
   get '/log-out' => 'sessions#destroy'
+
+  post '/boats/:id/follow' => 'followships#create', as: :follow
+  post '/boats/:id/unfollow/' => 'followships#destroy', as: :unfollow
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

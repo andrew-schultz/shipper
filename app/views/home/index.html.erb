@@ -12,7 +12,7 @@
 							<p class="snug small right"><%= link_to b.location.name, b %></p>
 							<p class="snug fat_sub_title top_space right">Current Jobs</p>
 							<% if b.jobs %>
-								<% b.jobs.each do |j| %>
+								<% b.jobs.claimed.each do |j| %>
 									<p class="snug small right"><%= link_to j.name, j %></p>
 								<% end %>
 							<% else %>
@@ -22,6 +22,9 @@
 					</div>
 				<% end %>
 				<p><%= link_to "New Ship", new_boat_path %></p>
+				<div class="dubbs">
+					
+				</div>
 			</div>
 		</div>
 	</div>

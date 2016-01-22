@@ -1,0 +1,8 @@
+
+<div class="follow_form">
+	<% if Followship.where(user_id: @user.id, boat_id: @boat.id) == nil%>
+		<%= link_to 'Follow', follow_path(@follow), method: :post %>
+	<% else %>
+		<%=link_to 'Unfollow', unfollow_path(@boat, @user_id), method: :destroy%>
+	<% end %>
+</div>

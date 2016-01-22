@@ -7,6 +7,7 @@ class HomeController < ApplicationController
 		@job = Job.new
 		@locations = Location.all
 		@jobs = Job.where(boat_id: nil)
+		
 	else
 		redirect_to log_in_path
 	end

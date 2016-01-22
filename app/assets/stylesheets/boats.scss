@@ -1,3 +1,43 @@
 // Place all the styles related to the boats controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#boat_show {
+	width: 630px;
+	height: 375px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10vh;
+	background-color: rgba(0, 0, 0, 0.4);
+	padding: 30px;
+	overflow: scroll;
+	border-radius: 10px;
+}
+
+#boat_img {
+	float: left;
+	margin: 20px;
+	margin-top: 40px;
+	position: fixed;
+}
+
+.boat_circle {
+	border-radius: 50%;
+	height: 300px;
+	width: 300px;
+}
+
+#boat_info {
+	float: right;
+	
+}
+
+#hide {
+	background-color: rgba(0, 0, 0, 0.7);
+	position: absolute;
+	padding: 20px;
+	border-radius: 5px;
+	width: 150px;
+	margin-top: 250px;
+	height: 100px;
+	display: none;
+}

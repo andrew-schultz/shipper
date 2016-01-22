@@ -1,0 +1,22 @@
+<div id="boat_show">
+	<div>
+		<%= image_tag @boat.avatar.url(:medium), id: "boat_img"%>
+	</div>
+	<div id="boat_info">
+		<h1 class="snug top_space"><%= @boat.name %></h1>
+		<p class="thin_title snug">Docked in <%= @boat.location.name %></p>
+		<p class="thin_title snug"><%= @boat.capacity %> containers</p>
+
+		<h2>Current Jobs</h2>
+		<% @jobs.claimed.each do |job| %>
+			<p class="thin_sub_title snug top_space"><%= link_to job.name, job %></p>
+			<p class="subtext snug">taken <%= time_ago_in_words(job.updated_at)%> ago</p>
+		<% end %>
+
+		<h2>Completed Jobs</h2>
+		<% @jobs.complete.each do |j| %>
+			<p class="thin_sub_title snug top_space"><%= link_to j.name, j %></p>
+			<p class="subtext snug">Completed <%= time_ago_in_words(j.updated_at) %> ago</p> 
+		<% end %>
+	</div>
+</div>

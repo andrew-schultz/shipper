@@ -1,0 +1,9 @@
+<div id="page">
+	<div id="new_boat">
+		<h2>Add an Image</h2>
+		<%= form_for @boat, :url => boat_path(@boat), :html => { :multipart => true } do |f| %>
+			<%= f.file_field :avatar %>
+			<%= f.submit %>
+		<% end %>
+	</div>
+</div>
