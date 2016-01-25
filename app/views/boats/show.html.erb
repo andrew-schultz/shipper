@@ -2,16 +2,19 @@
 	<div id="boat_show">
 		<div id="boat_img">
 			<%= image_tag @boat.avatar.url(:medium), class: "boat_circle"%>
-			<p class="small" id="img_pop">
-				Add an Image
-			</p>
-			<div class="follow_form">
-				<% if Followship.where(user_id: @user.id, boat_id: @boat.id).first == nil%>
-					<%= link_to 'Follow', follow_path(@boat), method: :post %>
-				<% else %>
-					<%= link_to 'Unfollow', unfollow_path(@boat), method: :post %>
-				<% end %>
-			</div>
+			<% if current_user.id == @boat.user.id %>
+				<p class="small boatbutton" id="img_pop">
+					Add an Image
+				</p>
+			<% else %>
+				<p class="small boatbutton">
+					<% if Followship.where(user_id: @user.id, boat_id: @boat.id).first == nil%>
+							<%= link_to 'Follow', follow_path(@boat), method: :post %>
+					<% else %>
+						<%= link_to 'Unfollow', unfollow_path(@boat), method: :post %>
+					<% end %>
+				</p>
+			<% end %>
 			<div id="hide">
 				<%= render partial: 'addimg', local: {  boat: @boat } %>
 			</div>

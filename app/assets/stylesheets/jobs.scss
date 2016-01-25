@@ -1,3 +1,18 @@
 // Place all the styles related to the jobs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#job_show {
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 2px solid;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: #132424;
+}
+
+.jobattr {
+	font-size: 20px;
+	font-weight: 700;
+}

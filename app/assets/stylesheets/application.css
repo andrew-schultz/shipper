@@ -95,7 +95,7 @@ footer {
 }
 
 .inline {
-	display: inline-block;
+	display: inline;
 }
 
 .thin_title {
@@ -154,6 +154,16 @@ footer {
 	height: 50px;
 	width: 50px;
 	border-radius: 50%;
+}
+
+.bottom_space {
+	margin-bottom: 10px;
+}
+
+.but {
+	/*border: 2px solid #ffffff;
+	padding: 3px;
+	border-radius: 5px; */
 }
 
 .top_space {

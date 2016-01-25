@@ -24,11 +24,19 @@
 	display: none;
 }
 
+#boats {
+	height: 310px;
+	border: 2px solid;
+	padding: 3px;
+	border-radius: 5px;
+	overflow: scroll;
+}
+
 .boat_name {
 	border: 2px solid;
 	padding: 5px;
 	border-radius: 5px;
-	
+	background-color: #132424;
 }
 
 #map {
@@ -55,15 +63,10 @@
 }
 
 #map_img p {
-	color: rgba(255, 255, 255, 0.8);
 	padding: 5px;
 	text-align: center;
 	margin-top: 0;
 	margin-bottom: 0;
-}
-
-#map_img a {
-	color: rgba(255, 255, 255, 0.8);
 }
 
 #jobs_panel {
@@ -104,6 +107,18 @@
 	font-weight: 700;
 }
 
+.fs {
+	color: red;
+}
+
+.fs a {
+	color: red;
+}
+
+.as {
+	color: green;
+}
+
 #l1 {
 	margin-left: 72%;
 	margin-top: 150px;
@@ -127,4 +142,37 @@
 #l5 {
 	margin-left: 46.5%;
 	margin-top: 95px;
+}
+
+.tab {
+	width: 45%;
+	display: inline-block;
+	border: solid #ffffff;
+	border-width: 2px 2px 0 2px;
+	text-align: center;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	z-index: 100;
+	height: 29px;
+
+}
+
+.active {
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+#follow {
+	margin-left: 4px;
+}
+
+#allboat {
+	display: none;
+}
+
+#content {
+	overflow: scroll;
+	height: 275px;
+	border: 2px solid #ffffff;
+	border-radius: 5px;
+	padding: 3px;
 }

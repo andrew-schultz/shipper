@@ -28,7 +28,6 @@
 
 #boat_info {
 	float: right;
-	
 }
 
 #hide {
@@ -40,4 +39,16 @@
 	margin-top: 250px;
 	height: 100px;
 	display: none;
+}
+
+.boatbutton {
+	border: 2px solid;
+	font-weight: 700;
+	padding: 3px;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.darkgreen {
+	background-color: #132424;
 }

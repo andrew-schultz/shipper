@@ -28,9 +28,7 @@ $(document).ready(function(){
 	// 	$('.boat_hide').slideUp(300);
 	// });
 	$('.boat_name').on('click', function(){
-
 		if($(this).hasClass('open')){
-			
 			$(this).removeClass('open');
 			$(this).children().slideUp(200);
 		} else {
@@ -57,7 +55,31 @@ $(document).ready(function(){
 			'top': '-175px',
 			'left': '5px',
 		})
-	})
+	});
+
+
+	$('#follow').on('click', function(){
+		if($(this).hasClass('active')){
+			$('#followboat').show();
+		} else {
+			$('#all').removeClass('active')
+			$('#allboat').hide();
+			$('#follow').addClass('active');
+			$('#followboat').show();
+		};
+	});
+
+	$('#all').on('click', function(){
+		if($(this).hasClass('active')){
+			$('allboat').show();
+		} else {
+			$('#follow').removeClass('active');
+			$('#followboat').hide();
+			$('#all').addClass('active');
+			$('#allboat').show();
+		};
+	});
+
 
 });
 

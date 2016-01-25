@@ -5,25 +5,68 @@
 			<p class="subtext snug">Click a ship to expand</p>
 			<div id="boats">
 				<% @boats.each do |b| %>
-					<div class="boat_name fat_sub_title top_space">
-						<%= image_tag b.avatar.url(:thumb), class: "thumb fill" %><%= b.name %>
+					<div class="boat_name fat_sub_title bottom_space">
+						<%= image_tag b.avatar.url(:thumb), class: "thumb fill i" %><%= b.name %>
 						<div class="boat_hide"<% link_to b %>>
 							<p class="snug small right"><%= link_to b.capacity, b %> containers</p>
 							<p class="snug small right"><%= link_to b.location.name, b %></p>
 							<p class="snug fat_sub_title top_space right">Current Jobs</p>
-							<% if b.jobs %>
+							<% if b.jobs.claimed.count < 1 %>
+								<p class="snug small right">none</p>
+							<% else %>
 								<% b.jobs.claimed.each do |j| %>
 									<p class="snug small right"><%= link_to j.name, j %></p>
 								<% end %>
-							<% else %>
-								<p>none</p>
 							<% end %>	
 						</div>
 					</div>
-				<% end %>
-				<p><%= link_to "New Ship", new_boat_path %></p>
-				<div class="dubbs">
-					
+				<% end %>	
+				<p class="boatbutton darkgreen"><%= link_to "New Ship", new_boat_path %></p>
+			</div>
+			<div class="follow_ships">
+				<h2 class="snug top_space tab active" id="follow">Follow</h2>
+				<h2 class="snug top_space tab" id="all">All</h2>
+				<div id="content">
+					<div id="followboat">
+						<% @follow_ships.each do |f| %>
+							<div class="boat_name fat_sub_title bottom_space">
+								<%= image_tag f.avatar.url(:thumb), class: "thumb fill" %><%= f.name %>
+								<div class="boat_hide"<% link_to f %>>
+									<p class="snug small right"><%= link_to f.user.username, f.user %>'s fleet</p>
+									<p class="snug small right"><%= link_to f.capacity, f %> containers</p>
+									<p class="snug small right"><%= link_to f.location.name, f %></p>
+									<p class="snug fat_sub_title top_space right">Current Jobs</p>
+									<% if f.jobs.claimed.count < 1 %>
+										<p class="snug small right">none</p>
+									<% else %>
+										<% f.jobs.claimed.each do |j| %>
+											<p class="snug small right"><%= link_to j.name, j %></p>
+										<% end %>
+									<% end %>	
+								</div>
+							</div>
+						<% end %>
+					</div>
+					<div id="allboat">
+						<% @allboats.each do |a| %>
+							<div class=" boat_name fat_sub_title bottom_space">
+								<%= image_tag a.avatar.url(:thumb), class: "thumb fill" %><%= a.name %>
+								<div class="boat_hide"<% link_to a %>>
+									<p class="snug small right"><%= link_to a.user.username, a.user %>'s fleet</p>
+									<p class="snug small right bold"><%= link_to a.capacity, a %> containers</p>
+									<p class="snug small right"><%= link_to a.location.name, a %></p>
+									<p class="snug fat_sub_title top_space right">Current Jobs</p>
+									<% if a.jobs.claimed.count < 1 %>
+										<p class="snug small right">none</p>
+									<% else %>
+										<% a.jobs.claimed.each do |j| %>
+											<p class="snug small right"><%= link_to j.name, j %></p>
+										<% end %>
+									<% end %>	
+								</div>
+							</div>
+						<% end %>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -36,7 +79,10 @@
 					<p class="poptit">Hong Kong</p>
 					<p class="underline">Boats at Port</p>
 					<% @boats.where(location_id: 1).each do |b| %>
-						<p><%= link_to b.name, b %></p>
+						<p class='own'><%= link_to b.name, b %></p>
+					<% end %>
+					<% @follow_ships.where(location_id: 1).each do |f| %>
+						<p class="fs"><%= link_to f.name, f %></p>
 					<% end %>
 					<p class="underline">Available Jobs</p>
 					<% @jobs.where(origin: 1).each do |j| %>
@@ -50,7 +96,10 @@
 					<p class="poptit">Lisbon</p>
 					<p class="underline">Boats at Port</p>
 					<% @boats.where(location_id: 2).each do |b| %>
-						<p><%= link_to b.name, b %></p>
+						<p class='own'><%= link_to b.name, b %></p>
+					<% end %>
+					<% @follow_ships.where(location_id: 2).each do |f| %>
+						<p class="fs"><%= link_to f.name %></p>
 					<% end %>
 					<p class="underline">Available Jobs</p>
 					<% @jobs.where(origin: 2).each do |j| %>
@@ -66,6 +115,9 @@
 					<% @boats.where(location_id: 3).each do |b| %>
 						<p><%= link_to b.name, b %></p>
 					<% end %>
+					<% @follow_ships.where(location_id: 3).each do |f| %>
+						<p class="fs"><%= link_to f.name %></p>
+					<% end %>
 					<p class="underline">Available Jobs</p>
 					<% @jobs.where(origin: 3).each do |j| %>
 						<p><%= link_to j.name, j %></p>
@@ -79,6 +131,9 @@
 					<p class="underline">Boats at Port</p>
 					<% @boats.where(location_id: 4).each do |b| %>
 						<p><%= link_to b.name, b %></p>
+					<% end %>
+					<% @follow_ships.where(location_id: 4).each do |f| %>
+						<p class="fs"><%= link_to f.name %></p>
 					<% end %>
 					<p class="underline">Available Jobs</p>
 					<% @jobs.where(origin: 4).each do |j| %>
@@ -94,6 +149,9 @@
 					<% @boats.where(location_id: 5).each do |b| %>
 						<p><%= link_to b.name, b %></p>
 					<% end %>
+					<% @follow_ships.where(location_id: 5).each do |f| %>
+						<p class="fs"><%= link_to f.name %></p>
+					<% end %>
 					<p class="underline">Available Jobs</p>
 					<% @jobs.where(origin: 5).each do |j| %>
 						<p><%= link_to j.name, j %></p>
@@ -104,16 +162,20 @@
 	</div>
 	<div id="jobs_panel">
 		<div class="panel_wrapper">
-			<div id="open_jobs">
-				<h2>Open Jobs</h2>
-				<% @jobs.each do |j| %>
-					<h3 class="snug"><%= link_to j.name, j %></h3>
-					<p class="snug ago">Posted by <%= j.user.username %> <%= time_ago_in_words(j.created_at) + " ago"%></p>
-				<% end %>
-			</div>
 			<div id="new_job">
 				<h2>New Job</h2>
 				<%= render partial: 'jobs/new', local: {job: @job} %>
+			</div>
+			<div id="open_jobs">
+				<h2>Open Jobs</h2>
+				<% if @jobs.count < 1 %>
+					<p class="small">none</p>
+				<% else %>
+					<% @jobs.each do |j| %>
+						<h3 class="snug"><%= link_to j.name, j %></h3>
+						<p class="snug ago">Posted by <%= j.user.username %> <%= time_ago_in_words(j.created_at) + " ago"%></p>
+					<% end %>
+				<% end %>
 			</div>
 		</div>
 	</div>

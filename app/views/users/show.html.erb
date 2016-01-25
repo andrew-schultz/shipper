@@ -1,1 +1,23 @@
-<h1>Users#show</h1>
+<div class="user_show">
+	<h2 class="snug top_space"><%= @user.username %>'s Fleet</h2>
+	<p class="subtext snug">Click a ship to expand</p>
+	<div>
+		<% @boats.each do |b| %>
+			<div class="boat_name fat_sub_title bottom_space">
+				<%= image_tag b.avatar.url(:thumb), class: "thumb fill i" %><%= b.name %>
+				<div class="boat_hide"<% link_to b %>>
+					<p class="snug small right"><%= link_to b.capacity, b %> containers</p>
+					<p class="snug small right"><%= link_to b.location.name, b %></p>
+					<p class="snug fat_sub_title top_space right">Current Jobs</p>
+					<% if b.jobs.claimed.count < 1 %>
+						<p class="snug small right">none</p>
+					<% else %>
+						<% b.jobs.claimed.each do |j| %>
+							<p class="snug small right"><%= link_to j.name, j %></p>
+						<% end %>
+					<% end %>	
+				</div>
+			</div>
+		<% end %>	
+	</div>
+</div>
