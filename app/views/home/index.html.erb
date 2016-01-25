@@ -1,7 +1,7 @@
 <div id="full_page">
 	<div id="user_panel">
 		<div class="panel_wrapper">
-			<h2 class="snug top_space"><%= @user.username %>'s Fleet</h2>
+			<h2 class="snug top_space"><%= link_to @user.username, @user %>'s Fleet</h2>
 			<p class="subtext snug">Click a ship to expand</p>
 			<div id="boats">
 				<% @boats.each do |b| %>
