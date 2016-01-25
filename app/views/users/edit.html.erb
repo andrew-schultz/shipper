@@ -1,1 +1,21 @@
-<h1>Edit User</h1>
+<div id="page">
+	<div id="sign_up">
+		<h1 class="snug">Account Settings</h1>
+		<%=form_for @user do |f| %>
+			<br>
+			<%=f.label :email %>
+			<%=f.text_field :email, :class => "user_input" %>
+			<br>
+			<br>
+			<%=f.label :username %>
+			<%=f.text_field :username, :class => "user_input" %>
+			<br>
+			<br>
+			<%=f.label :password %>
+			<%=f.password_field :password, :class => "user_input" %>
+			<br>
+			<br>
+			<%=f.submit "Sign Up", :class => "button" %>
+		<%end%>
+	</div>
+</div>

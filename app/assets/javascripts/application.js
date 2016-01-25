@@ -16,17 +16,15 @@
 //= require_tree .
 
 $(document).ready(function(){
+	$('.flash').fadeOut(5000);
+
+
 	$('.loc').hover(function(){
 		$(this).children().fadeIn(200);
 	}, function(){
 		$(this).children().fadeOut(200);
 	});
 
-	// $('.boat_name').hover(function(){
-	// 	$('.boat_hide').slideDown(300);
-	// }, function(){
-	// 	$('.boat_hide').slideUp(300);
-	// });
 	$('.boat_name').on('click', function(){
 		if($(this).hasClass('open')){
 			$(this).removeClass('open');
@@ -56,7 +54,6 @@ $(document).ready(function(){
 			'left': '5px',
 		})
 	});
-
 
 	$('#follow').on('click', function(){
 		if($(this).hasClass('active')){

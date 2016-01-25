@@ -1,14 +1,25 @@
 <div id="page">
-	<h1>Sign Up</h1>
-	<%=form_for User.new do |f| %>
-		<%=f.label :email %>
-		<%=f.text_field :email %>
-		<%=f.label :username %>
-		<%=f.text_field :username %>
-		<%=f.label :password %>
-		<%=f.password_field :password %>
-		<%=f.label :password_confirmation %>
-		<%=f.password_field :password_confirmation %>
-		<%=f.submit "Sign Up" %>
-	<%end%>
+	<div id="sign_up">
+		<h1 class="snug">Sign Up</h1>
+		<%=form_for User.new do |f| %>
+			<br>
+			<%=f.label :email %>
+			<%=f.text_field :email, :class => "user_input" %>
+			<br>
+			<br>
+			<%=f.label :username %>
+			<%=f.text_field :username, :class => "user_input" %>
+			<br>
+			<br>
+			<%=f.label :password %>
+			<%=f.password_field :password, :class => "user_input" %>
+			<br>
+			<br>
+			<%=f.label :password_confirmation %>
+			<%=f.password_field :password_confirmation, :class => "user_input" %>
+			<br>
+			<br>
+			<%=f.submit "Sign Up", :class => "button" %>
+		<%end%>
+	</div>
 </div>
